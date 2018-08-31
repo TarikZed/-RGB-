@@ -1,21 +1,21 @@
 from PIL import Image
 import numpy as np
-img = Image.open("rgb.png") #读取图片
-img_array = np.array(img)#用numpy把像素点排列成数组
+img = Image.open("rgb.png")      #读取图片
+img_array = np.array(img)       #用numpy把像素点排列成数组
 arr1 = img_array[:]
-print(arr1.shape)#检查数组大小
+print(arr1.shape)       #检查数组大小
 for x in range(0,arr1.shape[0]):
     for y in range(0,arr1.shape[1]):
         #定义为RGB值
         r = img_array[x,y][0]
         g = img_array[x,y][1]
         b = img_array[x,y][2]
-        if (r == 255 & b == 255):#当为像素为白色（背景）时
-            arr1[x,y] = (0,0,0)#将背景像素由白转为黑色
+        if (r == 255 & b == 255):       #当为像素为白色（背景）时
+            arr1[x,y] = (0,0,0)     #将背景像素由白转为黑色
         else:
-            arr1[x,y] = (79,79,79)#将绿色（人物）像素转为灰色,即(1,0,0)
+            arr1[x,y] = (79,79,79)      #将绿色（人物）像素转为灰色,即(1,0,0)，这里为了看请调成灰色
               
 
 image1 = Image.fromarray(arr1)
-image1.show()
-image1.save('OUTPUT.png')
+image1.show()        #显示图片
+image1.save('OUTPUT.png')  #保存调好的图片
